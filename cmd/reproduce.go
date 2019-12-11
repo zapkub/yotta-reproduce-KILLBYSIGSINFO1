@@ -16,7 +16,7 @@ func main() {
 	}
 
 	// uncomment this line for make it work as expect
-	yottadb.Exit()
+	// yottadb.Exit()
 
 	go func() {
 		time.Sleep(time.Second)
