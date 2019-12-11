@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"lang.yottadb.com/go/yottadb"
-	"time"
 )
 type A struct {
 	S string
@@ -18,15 +17,12 @@ func main() {
 	// uncomment this line for make it work as expect
 	// yottadb.Exit()
 
-	go func() {
-		time.Sleep(time.Second)
-		defer func() {
-			if r := recover(); r != nil {
-				fmt.Println("panic recovery!")
-				fmt.Println(r)
-			}
-		}()
-		var a *A
-		fmt.Println(a.S)
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("panic recovery!")
+			fmt.Println(r)
+		}
 	}()
+	var a *A
+	fmt.Println(a.S)
 }
